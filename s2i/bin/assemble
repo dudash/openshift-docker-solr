@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# TODO allow overridin this env variable
+SOLR_CONF_DIR=/opt/solr/server/solr/conf
+
+# We aren't using a real S2I builder, so files will be in /tmp by default
+echo "---> Copying SOLR files ..."
+cp -Rf /tmp/conf/. ${SOLR_CONF_DIR}

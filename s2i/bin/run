@@ -1,0 +1,11 @@
+#!/bin/bash -e
+# The run script executes the SOLR server
+#
+# For more information see the documentation:
+# https://docs.openshift.org/latest/creating_images/s2i.html#creating-images-s2i
+#
+
+# TODO allow overriding the CORENAME
+SOLR_CONF_DIR=autocore
+
+solr-create -c $CORE_NAME
