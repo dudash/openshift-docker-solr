@@ -8,4 +8,6 @@
 # TODO allow overriding the CORENAME
 CORE_NAME=autocore
 
+# TODO can I use these scripts?  Or will they break in OpenShift?
+# https://github.com/docker-solr/docker-solr/tree/master/scripts
 solr-create -c $CORE_NAME

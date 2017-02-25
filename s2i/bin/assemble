@@ -4,7 +4,11 @@
 SOLR_CONF_DIR=/opt/solr/server/solr/conf
 
 # We aren't using a real S2I builder, so files will be in /tmp by default
-echo "---> Copying SOLR files ..."
+echo "---> Copying SOLR config files ..."
 ls /tmp/solr-config
+echo "---> Copying source repo files ..."
 ls /tmp/src
+
 cp -Rf /tmp/src/solr-config/. ${SOLR_CONF_DIR}
+
+chmod 
