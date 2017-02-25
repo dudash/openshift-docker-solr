@@ -6,6 +6,6 @@
 #
 
 # TODO allow overriding the CORENAME
-SOLR_CONF_DIR=autocore
+CORE_NAME=autocore
 
 solr-create -c $CORE_NAME
