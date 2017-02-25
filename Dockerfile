@@ -1,4 +1,4 @@
-FROM    docker-solr:latest
+FROM solr:6.4
 MAINTAINER  Jason Dudash "jason.dudash@gmail.com"
 
 # Give the SOLR directory to root group (not root user)
