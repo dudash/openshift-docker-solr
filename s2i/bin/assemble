@@ -10,5 +10,3 @@ echo "---> Copying source repo files ..."
 ls /tmp/src
 
 cp -Rf /tmp/src/solr-config/. ${SOLR_CONF_DIR}
-
-chmod 
