@@ -29,17 +29,16 @@ Now you can access it via the route that was automatically exposed on port 8983 
 
 
 ### If you want to provide configuration in an automated way...
-* Import/create the provided S2I image stream
-`> oc create -n openshift -f XXXXX`
-
 * Fork this repo 
-* Update the config files in solr-config to your SOLR configuration
+* Update the config files in solr-config to your desired SOLR configuration
 
 * Create a new app using S2I (this will create the SOLR core and inject your configuration)
-`> oc new-app XXXX XXXX`
+`> oc new-app dudash/openshift-solr~https://github.com/[YOUR-FORK]/openshift-docker-solr.git`
 
 Now you can access it via the route that was automatically exposed on port 8983 and whereever your OpenShift apps route (e.g. openshift-solr-myproject.127.0.0.1.nip.io)
 
+* (optionally) Import the image stream to make this available in the webconsole of OpenShift
+`> TBD`
 
 ## About this repo
 Here is some information about how this all works behind the scenes.
