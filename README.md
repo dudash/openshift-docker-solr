@@ -50,7 +50,7 @@ Here is some information about how this all works behind the scenes.
 ### The Dockerfile
 
 ### The S2I process
-This repo doesn't require (the s2i tool)[https://github.com/openshift/source-to-image] to build the image.  However, if you look into the Dockerfile, it does set some s2i LABELS in order for OpenShift to be able to use it as an s2i builder image.
+This repo doesn't require [the s2i tool][https://github.com/openshift/source-to-image] to build the image.  However, if you look into the Dockerfile, it does set some s2i LABELS in order for OpenShift to be able to use it as an s2i builder image.
 
 #### assemble script details
 TBD
