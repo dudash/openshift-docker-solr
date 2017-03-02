@@ -37,8 +37,8 @@ Now you can access it via the route that was automatically exposed on port 8983 
 
 Now you can access it via the route that was automatically exposed on port 8983 and whereever your OpenShift apps route (e.g. openshift-solr-myproject.127.0.0.1.nip.io)
 
-* (optionally) Import the image stream to make this available in the webconsole of OpenShift
-`> TBD`
+* (optionally) You can import the image stream to make this available in the webconsole of OpenShift
+`> TBD need to write the image stream template`
 
 ### Cluster considerations
 TBD node selectors to make sure SOLR goes to a node w/ enough memory
@@ -50,7 +50,7 @@ Here is some information about how this all works behind the scenes.
 ### The Dockerfile
 
 ### The S2I process
-Not currently using S2I to build this image, faking it out so that OpenShift will consume it.  This will probably change to *real* S2I soon.
+This repo doesn't require (the s2i tool)[https://github.com/openshift/source-to-image] to build the image.  However, if you look into the Dockerfile, it does set some s2i LABELS in order for OpenShift to be able to use it as an s2i builder image.
 
 #### assemble script details
 TBD
