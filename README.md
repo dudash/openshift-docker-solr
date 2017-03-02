@@ -20,7 +20,7 @@ These are to allow you to easily push your project specific configuration files 
 ## How to use all of this with your apps
 Sounds cool right?  It is.  And here's how you can use it.
 
-### If you just want to run SOLR in OpenShift...
+### If you just want to try running SOLR in OpenShift...
 
 Create the SOLR app from a Docker image
 `> oc new-app dudash/openshift-solr`
@@ -32,7 +32,7 @@ Now you can access it via the route that was automatically exposed on port 8983 
 * Fork this repo 
 * Update the config files in solr-config to your desired SOLR configuration
 
-* Create a new app using S2I (this will create the SOLR core and inject your configuration)
+* Create a new app using oc CLI (this will also create the SOLR core and inject your configuration)
 `> oc new-app dudash/openshift-solr~https://github.com/[YOUR-FORK]/openshift-docker-solr.git`
 
 Now you can access it via the route that was automatically exposed on port 8983 and whereever your OpenShift apps route (e.g. openshift-solr-myproject.127.0.0.1.nip.io)
@@ -40,13 +40,17 @@ Now you can access it via the route that was automatically exposed on port 8983 
 * (optionally) Import the image stream to make this available in the webconsole of OpenShift
 `> TBD`
 
+### Cluster considerations
+TBD node selectors to make sure SOLR goes to a node w/ enough memory
+TBD using with persistent storage
+
 ## About this repo
 Here is some information about how this all works behind the scenes.
 
 ### The Dockerfile
 
 ### The S2I process
-TBD
+Not currently using S2I to build this image, faking it out so that OpenShift will consume it.  This will probably change to *real* S2I soon.
 
 #### assemble script details
 TBD
