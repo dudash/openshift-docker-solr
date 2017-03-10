@@ -29,11 +29,12 @@ Now you can access it via the route that was automatically exposed on port 8983 
 
 
 ### If you want to provide configuration in an automated way...
-* Fork this repo 
-* Update the config files in solr-config to your desired SOLR configuration
+* Create a repo
+* Update the config files in 'conf' to your desired SOLR configuration
 
-* Create a new app using oc CLI (this will also create the SOLR core and inject your configuration)
-`> oc new-app dudash/openshift-solr~https://github.com/[YOUR-FORK]/openshift-solr.git --context-dir=test --name=solr-demo`
+* Create a new app using oc CLI (this will also create the SOLR core and inject your configuration).  Note: if your 'conf' dir isn't at the root of your repo, you'll need to append '--context-dir=PATH'
+`> oc new-app dudash/openshift-solr~https://github.com/[YOU]/[YOUR-REPO].git --name=solr-demo`
+
 
 Now you can access it via the route that was automatically exposed on port 8983 and whereever your OpenShift apps route (e.g. openshift-solr-myproject.127.0.0.1.nip.io).  And a SOLR core is automatically created for use.
 
