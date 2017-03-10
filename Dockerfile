@@ -11,7 +11,9 @@ LABEL io.k8s.description="Run SOLR search in OpenShift" \
       io.openshift.s2i.scripts-url="image:///${STI_SCRIPTS_PATH}"
 
 COPY ./s2i/bin/. ${STI_SCRIPTS_PATH}
-COPY ./solr-config/ /tmp/solr-config
+
+# If we need to add files as part of every SOLR conf, they'd go here
+# COPY ./solr-config/ /tmp/solr-config
 
 # Give the SOLR directory to root group (not root user)
 # https://docs.openshift.org/latest/creating_images/guidelines.html#openshift-origin-specific-guidelines
