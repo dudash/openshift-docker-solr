@@ -9,6 +9,7 @@ Apache SOLR makes it easy to add search capability into your Java apps.  SOLR is
 
 This overrides the [official SOLR image][2] to tweak a few things in order to run SOLR efficiently on OpenShift.  
 <h4>FYI, you don't have to build the image, you can use a prebuilt image - I'll try to keep updated versions of it available on docker hub.</h4>
+
 [![docker hub stats](http://dockeri.co/image/dudash/openshift-solr)](https://hub.docker.com/r/dudash/openshift-solr/)
 
 
