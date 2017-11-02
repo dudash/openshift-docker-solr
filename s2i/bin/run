@@ -3,11 +3,65 @@
 #
 # For more information see the documentation:
 # https://docs.openshift.org/latest/creating_images/s2i.html#creating-images-s2i
-#
 
-# TODO allow overriding the CORENAME
-CORE_NAME=autocore
+# Override this env variable to change the name of your core.
+if [ -z "${CORE_NAME}" ]; then
+  CORE_NAME=autocore
+fi
+
+if [ -z "${SOLR_CONF_DIR}" ]; then
+  SOLR_CONF_DIR="${SOLR_HOME:-/opt/solr/server/solr}/configsets"
+fi
+
+if [ -z "${CONF_DIR}" ]; then
+  CONF_DIR="${SOLR_CONF_DIR}/${CORE_NAME}"
+fi
+
+if [ -z "${SOLR_HOME}" ]; then
+  CORES_DIR="/opt/solr/server/solr/mycores"
+else
+  CORES_DIR="${SOLR_HOME}"
+fi
+
+CORE_DIR="${CORES_DIR}/${CORE_NAME}"
 
 # Use scripts from the official docker-solr image
 # https://github.com/docker-solr/docker-solr/tree/master/scripts
-solr-create -c $CORE_NAME
+echo "Working from; $(pwd)"
+echo
+
+if [[ ! -d ${CORE_DIR} ]]; then
+  echo "====================================================================="
+  echo "Pre-Creating SOLR Core:"
+  echo "---------------------------------------------------------------------"
+  echo "Core Name: ${CORE_NAME}" 
+  echo "Configuration: ${CONF_DIR}"
+  echo
+  echo "By default cores are created in either the SOLR_HOME directory"
+  echo "or the /opt/solr/server/solr/mycores directory."
+  echo
+  echo "If the SOLR_HOME env variable is defined the core will be created"
+  echo "in that directory.  Otherwise the core will be created in"
+  echo "/opt/solr/server/solr/mycores"
+  echo "====================================================================="
+  
+  solr-precreate ${CORE_NAME} ${CONF_DIR}
+else
+  echo "====================================================================="
+  echo "Updating SOLR Configuration Files:"
+  echo "---------------------------------------------------------------------"
+  echo "Core Name: ${CORE_NAME}" 
+  echo "Configuration Source: ${CONF_DIR}"
+  echo "Configuration Destination: ${CORES_DIR}"
+  echo
+  echo "By default cores are created in either the SOLR_HOME directory"
+  echo "or the /opt/solr/server/solr/mycores directory."
+  echo
+  echo "If the SOLR_HOME env variable is defined the core will be created"
+  echo "in that directory.  Otherwise the core will be created in"
+  echo "/opt/solr/server/solr/mycores"
+  echo "====================================================================="
+  
+  cp -r "${CONF_DIR}/" "${CORES_DIR}"
+  exec solr -f
+fi
