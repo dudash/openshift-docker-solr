@@ -1,8 +1,6 @@
 # Containerized SOLR + OpenShift
 Apache SOLR makes it easy to add search capability into your Java apps.  SOLR is a search server (backed by the Lucene serach library).  This repository provides a way for you to take advantage of that in OpenShift.
 
-<h1> THIS IS CURRENTLY IN WORK ---- YMMV</h1>
-
 <h3>There are 2 distinct parts to this repo:</h3>
     
 *(1) A Dockerfile*
