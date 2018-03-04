@@ -5,7 +5,7 @@ Apache SOLR makes it easy to add search capability into your apps.  SOLR is a se
    
 ### (1) A Dockerfile
 
-Which overrides the [official SOLR image][2] to tweak a few things in order to run SOLR efficiently on OpenShift.  
+Which overrides the [official Docker SOLR image][2] to tweak a few things in order to run SOLR efficiently on OpenShift.  
 
 ### (2) S2I scripts
 
@@ -32,7 +32,7 @@ Now you can access it via the route that was automatically exposed on port 8983 
 * Create a repo
 * Create a folder called `solr/autocore/conf` and add SOLR config files for your desired SOLR configuration
   (Refer to the sample in the project).
-* Wire up your build configuration to point to the repo a configuration.  Refer to the script and template samples in the `openshift` directory.
+* Wire up your OpenShift build configuration to point to the repo with configuration.  Refer to the script and template samples in the `openshift` directory.
 
 ### The S2I process
 This repo doesn't require [the s2i tool](https://github.com/openshift/source-to-image) to build the image.  However, if you look into the Dockerfile, it does set some s2i LABELS in order for OpenShift to be able to use it as an s2i builder image.
